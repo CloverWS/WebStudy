@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+	var tree = [{
+	"id": "\\",
+	"text": "\\",
+	"icon": "fa fa-folder",
+	"li_attr": {
+		"id": "\\"
+	},
+	"a_attr": {
+		"href": "#",
+		"id": "\\_anchor"
+	},
+	"state": {
+		"loaded": true,
+		"opened": true,
+		"selected": false,
+		"disabled": false
+	},
+	"data": {},
+	"children": [{
+		"id": "j3_2",
+		"text": "New node",
+		"icon": "fa fa-folder",
+		"li_attr": {
+			"id": "j3_2"
+		},
+		"a_attr": {
+			"href": "#",
+			"id": "j3_2_anchor"
+		},
+		"state": {
+			"loaded": true,
+			"opened": true,
+			"selected": true,
+			"disabled": false
+		},
+		"data": {},
+		"children": [{
+				"id": "j3_3",
+				"text": "drgre",
+				"icon": "fa fa-folder",
+				"li_attr": {
+					"id": "j3_3"
+				},
+				"a_attr": {
+					"href": "#",
+					"id": "j3_3_anchor"
+				},
+				"state": {
+					"loaded": true,
+					"opened": true,
+					"selected": false,
+					"disabled": false
+				},
+				"data": {},
+				"children": [{
+					"id": "j3_4",
+					"text": "rgergrt",
+					"icon": "fa fa-folder",
+					"li_attr": {
+						"id": "j3_4"
+					},
+					"a_attr": {
+						"href": "#",
+						"id": "j3_4_anchor"
+					},
+					"state": {
+						"loaded": true,
+						"opened": false,
+						"selected": false,
+						"disabled": false
+					},
+					"data": {},
+					"children": [],
+					"type": "default"
+				}],
+				"type": "default"
+			}, {
+				"id": "j3_5",
+				"text": "wrwerw4rw",
+				"icon": "fa fa-folder",
+				"li_attr": {
+					"id": "j3_5"
+				},
+				"a_attr": {
+					"href": "#",
+					"id": "j3_5_anchor"
+				},
+				"state": {
+					"loaded": true,
+					"opened": false,
+					"selected": false,
+					"disabled": false
+				},
+				"data": {},
+				"children": [],
+				"type": "default"
+			}, {
+				"id": "j3_6",
+				"text": "wrwerw4rw",
+				"icon": "fa fa-folder",
+				"li_attr": {
+					"id": "j3_5"
+				},
+				"a_attr": {
+					"href": "#",
+					"id": "j3_5_anchor"
+				},
+				"state": {
+					"loaded": true,
+					"opened": false,
+					"selected": false,
+					"disabled": false
+				},
+				"data": {},
+				"children": [{
+					"id": "j3_7",
+					"text": "New node",
+					"children": []
+				}],
+				"type": "default"
+			}
+
+		],
+		"type": "default"
+	}],
+	"type": "default"
+}];
+
+var newTree = optimize(tree);
+console.log(newTree);
+var json = JSON.stringify(newTree);
+console.log(json);
+
+function optimize(tree) {
+	var newTree = [];
+	
+	for (var i in tree) {
+	    var json = {};
+		var node = tree[i];
+		console.log("id: " + node.id);
+		console.log("text: " + node.text);
+		//newTree.push("id: " + node.id);
+		//newTree.push("text: " + node.text);
+		json.id = node.id;
+		json.text = node.text;
+		var children = node.children;
+		if (children.length != 0){
+		    //newTree.push("children: {" + optimize(children) + "}");
+			json.children = optimize(children);	
+			
+		}
+		newTree.push(json);
+		
+	}
+	
+	return newTree;
+}
+</script>
+</body>
+</html>
