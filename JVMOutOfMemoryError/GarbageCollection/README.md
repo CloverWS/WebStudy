@@ -6,3 +6,5 @@ Problem descreibe : JVMOutofMenmoryError while run the programm.
 Task of Programm : stamp all document(every page), every document has page ∈ [92,400].
 Solution : use the Garbage Collection : System.gc() and let the temporary class become null(for Garbage Collection).
 
+
+
